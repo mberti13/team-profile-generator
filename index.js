@@ -4,6 +4,7 @@ const fs = require('fs');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
+const generatePage = require('./src/page-template.js');
 
 //array for teamData
 let teamData = [];
@@ -177,6 +178,28 @@ const promptEmployee = () =>{
         })
 };
 
+const writeFile = fileContent =>{
+    fs.writeFile('./dist/index.html', fileContent, err =>{
+        if(err){
+            console.log(err);
+            return;
+            //if file is written successfully
+        }else{
+            console.log("Your team's profile has successfully been created! Check the 'dist' folder for the index.html file.")
+        }
+    })
+};
+
+
 promptManager()
     .then(promptEmployee)
+    .then(teamData =>{
+        return generatePage(teamData);
+    })
+    .then(pageHTML =>{
+        return writeFile(pageHTML);
+    })
+    .catch(err =>{
+        console.log(err)
+    });
  
