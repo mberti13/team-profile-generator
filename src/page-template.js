@@ -118,7 +118,7 @@ const generateHTMLPage = employeeCards =>{
     <body>
         <header>
             <nav class="navbar" id="navbar">
-                <span class="navbar-brand mb-0 h1 w-100 text-center bg-info" id="navbar-text">My Team</span>
+                <span class="navbar-brand mb-0 h1 w-100 text-center bg-danger" id="navbar-text">My Team</span>
             </nav>
         </header>
         <main>
